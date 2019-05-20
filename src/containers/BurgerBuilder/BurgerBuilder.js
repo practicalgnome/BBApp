@@ -1,18 +1,25 @@
 import React, {Component} from 'react';
-
-import Auxiliary from '../../hoc/Auxiliary';
-import PropTypes from 'prop-types';
+import Aux from '../../hoc/Auxiliary';
+import Burger from "../../components/Burger/Burger";
 
 class BurgerBuilder extends Component {
+    state = {
+      ingredients: {
+          salad: 1,
+          bacon: 1,
+          cheese: 2,
+          meat: 2
+      }
+    };
+
     render() {
         return (
-            <Auxiliary>
-
-            </Auxiliary>
+            <Aux>
+                <Burger ingredients={this.state.ingredients}/>
+                <div>build controls</div>
+            </Aux>
         );
     }
 }
-
-BurgerBuilder.propTypes = {};
 
 export default BurgerBuilder;
