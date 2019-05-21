@@ -40,7 +40,23 @@ class BurgerBuilder extends Component {
     };
 
     removeIngrHandler = (type) => {
+        const oldCount = this.state.ingredients[type];
+        if (oldCount > 0) {
+            const updatedCount = oldCount - 1;
+            const updatedIng = {
+                ...this.state.ingredients
+            };
+            updatedIng[type] = updatedCount;
 
+            const priceDeduction = ING_PRICES[type];
+            const oldPrice = this.state.totalPrice;
+            const newPrice = oldPrice - priceDeduction;
+
+            this.setState({
+                totalPrice: newPrice,
+                ingredients: updatedIng
+            });
+        }
     };
 
     render() {
@@ -48,7 +64,9 @@ class BurgerBuilder extends Component {
             <Aux>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
-                    ingAdded={this.addIngrHandler} />
+                    ingAdded={this.addIngrHandler}
+                    ingDel={this.removeIngrHandler}
+                />
             </Aux>
         );
     }
