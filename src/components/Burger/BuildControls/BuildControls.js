@@ -10,7 +10,6 @@ const controls = [
 ];
 
 const BuildControls = (props) => {
-    console.log(props.purchasable);
     return (
         <div className={classes.BuildControls}>
             <p>Current price: <strong>{props.price.toFixed(2)}</strong> $</p>
@@ -22,7 +21,7 @@ const BuildControls = (props) => {
                             deleted={() => props.ingDel(ctrl.type)}
                             disabled={props.disabled[ctrl.type]}/>
             })}
-            <button className={classes.OrderButton} disabled={!props.purchasable}>ORDER NOW</button>
+            <button className={classes.OrderButton} disabled={!props.purchasable} onClick={props.showModal}>ORDER NOW</button>
             {/*<button className={classes.OrderButton} disabled={props.price === 4}>ORDER NOW</button>*/}
         </div>
     );
