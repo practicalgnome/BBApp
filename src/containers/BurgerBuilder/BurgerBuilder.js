@@ -26,9 +26,8 @@ class BurgerBuilder extends Component {
     };
 
     showModal = () => {
-      let isShown = !this.state.showModal;
       this.setState({
-          showModal: isShown
+          showModal: true
       })
     };
 
@@ -95,7 +94,7 @@ class BurgerBuilder extends Component {
         return (
             <Aux>
                 { this.state.showModal ? (
-                <Modal>
+                <Modal show={this.state.showModal}>
                     <OrderSummary ingredients={this.state.ingredients}/>
                 </Modal>) : null}
                 <Burger
